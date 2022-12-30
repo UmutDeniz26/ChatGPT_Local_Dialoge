@@ -5,7 +5,7 @@ const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container')
 let loadInterval;
 
-function loader(element) {
+function loader(element) {//sela
   element.textContent='';
   loadInterval=setInterval(() => {
       element.textContent+='.';
