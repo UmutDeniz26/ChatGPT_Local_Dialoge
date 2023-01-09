@@ -4,6 +4,7 @@ import user from './assets/user.svg'
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container')
 let loadInterval;
+var answerMemory=[]
 
 function loader(element) {
   element.textContent='';
@@ -72,13 +73,21 @@ const handleSubmit = async (e) => {
   loader(messageDiv);
 
   //fetch data from server
+  var inputString=""
+  /*if (answerMemory[answerMemory.length-1]!=undefined){
+    inputString=`[last answer: ${answerMemory[answerMemory.length-1]}], ${data.get('prompt')}`
+  }
+  else{
+    inputString=data.get('prompt')
+  }*/
+  inputString=data.get('prompt')
   const response= await fetch('http://localhost:5000',{
     method:'POST',
     headers:{
       'Content-Type':'application/json', 
     },
     body:JSON.stringify({
-      prompt:data.get('prompt')
+      prompt:inputString
     })
   })
   clearInterval(loadInterval);
@@ -88,6 +97,7 @@ const handleSubmit = async (e) => {
     console.log(response)
     const data=await response.json();
     const parseedData=data.bot.trim();
+    answerMemory.push(parseedData)
     typeText(messageDiv,parseedData);
   }
   else{
