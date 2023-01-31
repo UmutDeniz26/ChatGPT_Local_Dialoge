@@ -54,9 +54,11 @@ app.post('/',async (req,res)=>{
         const currentPrompt=req.body.prompt;
         var chatterName=req.body.chatter;
         var username=req.body.userName;
+        var external=req.body.externalCommand;
         
         username=nameValidator(username,"Umut")
         chatterName=nameValidator(chatterName,"ChatGPT")
+
 
         if(currentPrompt == "Reset123456uuklkjderascm..2123456"){
             console.log("Reset Request!")
@@ -68,7 +70,7 @@ app.post('/',async (req,res)=>{
             promptsAndAnswers.shift()
         }
         newPrompt=promptGenerator(currentPrompt,chatterName,username)
-        newPrompt=`${chatterName} gibi davran.\n${newPrompt}`
+        newPrompt=`${chatterName} gibi davran.\n${external}${newPrompt}`
         console.log(newPrompt)
         const response=await openai.createCompletion({
             model:"text-davinci-003",

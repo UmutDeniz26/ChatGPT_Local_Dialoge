@@ -2,17 +2,16 @@ var loginId=0;
 
 // file1.js
 document.getElementById('button1').onclick= ( )=> {
-    
     handleLogin()
-
 }
 
 function handleLogin(){
 
     let chattername=document.querySelector(".Chat-Name>input").value
     let username=document.querySelector(".User-Name>input").value
+    let external=document.querySelector(".External-Name>input").value
     console.log(chattername,username)    
-    window.location = `chat.html?${chattername}#_#${username}`;//${name}
+    window.location = `chat.html?${chattername}#_#${username}#_#${external}`;
 }
 
 
@@ -21,3 +20,13 @@ document.querySelector(".Chat-Name>input").addEventListener('keyup',(e)=>{
         handleLogin()
     } 
   })
+document.querySelector(".User-Name>input").addEventListener('keyup',(e)=>{
+    if(e.keyCode===13){
+        handleLogin()
+    } 
+})
+document.querySelector(".External-Name>input").addEventListener('keyup',(e)=>{
+    if(e.keyCode===13){
+        handleLogin()
+    } 
+})

@@ -5,11 +5,15 @@ const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container')
 let loadInterval;
 var answerMemory=[]
-var chatter=window.location.href.split("?")["1"].split("#_#")["0"].replace("%20"," ")
-var username=window.location.href.split("?")["1"].split("#_#")["1"].replace("%20"," ")
-console.log(chatter)
-console.log(username)
+var hrefLoc=decodeURI(window.location.href).split("?").slice(1)
+var chatter=hrefLoc["0"].split("#_#")[0]
+var username=hrefLoc["0"].split("#_#")[1]
+var externalCommand=hrefLoc["0"].split("#_#")[2]
 
+console.log("href: ",hrefLoc)
+console.log("chatter: ",chatter)
+console.log("user: ",username)
+console.log("external: ",externalCommand)
 function loader(element) {
   element.textContent='';
   loadInterval=setInterval(() => {
@@ -92,7 +96,8 @@ const handleSubmit = async (e) => {
     body:JSON.stringify({
       prompt:inputString,
       chatter:chatter,
-      userName:username
+      userName:username,
+      externalCommand:externalCommand
     })
   })
   clearInterval(loadInterval);
