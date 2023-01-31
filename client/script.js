@@ -5,6 +5,10 @@ const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container')
 let loadInterval;
 var answerMemory=[]
+var chatter=window.location.href.split("?")["1"].split("#_#")["0"].replace("%20"," ")
+var username=window.location.href.split("?")["1"].split("#_#")["1"].replace("%20"," ")
+console.log(chatter)
+console.log(username)
 
 function loader(element) {
   element.textContent='';
@@ -86,7 +90,9 @@ const handleSubmit = async (e) => {
       'Content-Type':'application/json', 
     },
     body:JSON.stringify({
-      prompt:inputString
+      prompt:inputString,
+      chatter:chatter,
+      userName:username
     })
   })
   clearInterval(loadInterval);
