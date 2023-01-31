@@ -17,7 +17,6 @@ function loader(element) {
 }
 
 function typeText(element,text) {
-  element.innerHTML+="Merhaba Umut hazretleri,\n";
   let index=0;
   let interval=setInterval(() => {
     if(index<text.length){
@@ -107,6 +106,7 @@ const handleSubmit = async (e) => {
   }
 }
 
+
 form.addEventListener('submit',handleSubmit);
 form.addEventListener('keyup',(e)=>{
   if(e.keyCode===13){
@@ -114,3 +114,24 @@ form.addEventListener('keyup',(e)=>{
   } 
 })
 
+
+const handleReset = async (e) => {
+  e.preventDefault();
+
+  const response= await fetch('http://localhost:5000',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json', 
+    },
+    body:JSON.stringify({
+      prompt:"Reset123456uuklkjderascm..2123456"
+    })
+  })
+  console.log("selam")
+}
+
+form.addEventListener('button',handleReset);
+document.querySelector(".reset").addEventListener('click',(e)=>{
+  handleReset(e);
+  
+})

@@ -12,6 +12,26 @@ const configuration=new Configuration({
 })
 
 const openai= new OpenAIApi(configuration);
+var promptsAndAnswers=[]
+var prompt=""
+var newPrompt=""
+
+function promptGenerator(currentPrompt){
+    console.log("-------------------------------------------------------------------")
+    prompt=""
+    promptsAndAnswers.forEach((element,index) => {
+        if(index%2==0){
+            prompt+=`User: ${element}\n`
+        }
+        else{
+            prompt+=`ChatGPT: ${element}\n`
+        }
+    });
+    if(prompt==""){
+        prompt=`User: ${currentPrompt}\n`
+    }
+    return `${prompt}User: ${currentPrompt}ChatGPT: `
+}
 
 const app=express();
 app.use(cors());
@@ -24,11 +44,18 @@ app.get('/', async (req,res)=>{
 });
 app.post('/',async (req,res)=>{
     try {
-        const propmpt=req.body.prompt;
+        const currentPrompt=req.body.prompt;
+        if(currentPrompt == "Reset123456uuklkjderascm..2123456"){
+            console.log("Reset Request!")
+            promptsAndAnswers=[]
+            return
+        }
+        newPrompt=promptGenerator(currentPrompt)
+        console.log(`ChatGPT gibi davran.\n${newPrompt}`)
         const response=await openai.createCompletion({
             model:"text-davinci-003",
-            prompt:`${propmpt}`,
-            temperature:0.7,
+            prompt:`ChatGPT gibi davran.\n${newPrompt}`,
+            temperature:0,
             max_tokens:3000,
             top_p:1,
             frequency_penalty:0.5,
@@ -38,6 +65,9 @@ app.post('/',async (req,res)=>{
         res.status(200).send({
             bot:response.data.choices[0].text
         })
+        promptsAndAnswers.push(currentPrompt.replace("\n",""))
+        promptsAndAnswers.push(response.data.choices[0].text.replace("\n",""))
+
     } catch (error) {
         console.log(error)
         res.status(500).send({error})

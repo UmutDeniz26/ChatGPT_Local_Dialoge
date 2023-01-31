@@ -148,3 +148,12 @@ form img {
   width: 30px;
   height: 30px;
 }
+
+.reset svg{
+  width: 30px;
+  height: 30px;
+  color: #dcdcdc;
+  border: #40414F;
+  border-width: 1rem;
+
+}
