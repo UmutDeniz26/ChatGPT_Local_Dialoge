@@ -15,9 +15,10 @@ const openai= new OpenAIApi(configuration);
 var promptsAndAnswers=[]
 var prompt=""
 var newPrompt=""
+var flagExternal=false
 
 function promptGenerator(currentPrompt,chatterName,username){
-    console.log("-------------------------------------------------------------------")
+    console.log(`------------------------------------------------------------------`)
     prompt=""
     promptsAndAnswers.forEach((element,index) => {
         if(index%2==0){
@@ -55,7 +56,7 @@ app.post('/',async (req,res)=>{
         var chatterName=req.body.chatter;
         var username=req.body.userName;
         var external=req.body.externalCommand;
-        
+        var checkBox=req.body.checkBox;
         username=nameValidator(username,"Umut")
         chatterName=nameValidator(chatterName,"ChatGPT")
 
@@ -70,7 +71,20 @@ app.post('/',async (req,res)=>{
             promptsAndAnswers.shift()
         }
         newPrompt=promptGenerator(currentPrompt,chatterName,username)
-        newPrompt=`${chatterName} gibi davran.\n${external}${newPrompt}`
+        if(checkBox=="true"){
+            if(flagExternal==false){
+                newPrompt=`${chatterName} gibi davran.\n${newPrompt}\n(${external})`
+                flagExternal=true
+            }
+            else{
+                newPrompt=`${chatterName} gibi davran.\n${newPrompt}`
+            }
+        }
+        else{
+            newPrompt=`${chatterName} gibi davran.\n${newPrompt}\n(${external})`
+
+        }
+        
         console.log(newPrompt)
         const response=await openai.createCompletion({
             model:"text-davinci-003",

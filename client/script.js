@@ -9,11 +9,13 @@ var hrefLoc=decodeURI(window.location.href).split("?").slice(1)
 var chatter=hrefLoc["0"].split("#_#")[0]
 var username=hrefLoc["0"].split("#_#")[1]
 var externalCommand=hrefLoc["0"].split("#_#")[2]
+var checkBox=hrefLoc["0"].split("#_#")[3]
 
 console.log("href: ",hrefLoc)
 console.log("chatter: ",chatter)
 console.log("user: ",username)
 console.log("external: ",externalCommand)
+console.log("checkBox: ",checkBox)
 function loader(element) {
   element.textContent='';
   loadInterval=setInterval(() => {
@@ -97,7 +99,8 @@ const handleSubmit = async (e) => {
       prompt:inputString,
       chatter:chatter,
       userName:username,
-      externalCommand:externalCommand
+      externalCommand:externalCommand,
+      checkBox:checkBox
     })
   })
   clearInterval(loadInterval);

@@ -10,8 +10,8 @@ function handleLogin(){
     let chattername=document.querySelector(".Chat-Name>input").value
     let username=document.querySelector(".User-Name>input").value
     let external=document.querySelector(".External-Name>input").value
-    console.log(chattername,username)    
-    window.location = `chat.html?${chattername}#_#${username}#_#${external}`;
+    let checkBox=document.querySelector('#accept')
+    window.location = `chat.html?${chattername}#_#${username}#_#${external}#_#${checkBox.checked}`;
 }
 
 
