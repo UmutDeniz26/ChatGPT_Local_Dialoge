@@ -11,7 +11,7 @@ function handleLogin(){
     let username=document.querySelector(".User-Name>input").value
     let external=document.querySelector(".External-Name>input").value
     let checkBox=document.querySelector('#accept')
-    window.location = `chat.html?${chattername}#_#${username}#_#${external}#_#${checkBox.checked}`;
+    window.location = `chat.html?${chattername}#_#${username}#_#${external}#_#${checkBox.checked}#_#${document.getElementById('languages').value}`;
 }
 
 

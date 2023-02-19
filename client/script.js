@@ -10,12 +10,15 @@ var chatter=hrefLoc["0"].split("#_#")[0]
 var username=hrefLoc["0"].split("#_#")[1]
 var externalCommand=hrefLoc["0"].split("#_#")[2]
 var checkBox=hrefLoc["0"].split("#_#")[3]
+var languageChoice=hrefLoc["0"].split("#_#")[4]
 
 console.log("href: ",hrefLoc)
 console.log("chatter: ",chatter)
 console.log("user: ",username)
 console.log("external: ",externalCommand)
 console.log("checkBox: ",checkBox)
+console.log("languageChoice: ",languageChoice)
+
 function loader(element) {
   element.textContent='';
   loadInterval=setInterval(() => {
@@ -100,7 +103,8 @@ const handleSubmit = async (e) => {
       chatter:chatter,
       userName:username,
       externalCommand:externalCommand,
-      checkBox:checkBox
+      checkBox:checkBox,
+      languageChoice:languageChoice
     })
   })
   clearInterval(loadInterval);
