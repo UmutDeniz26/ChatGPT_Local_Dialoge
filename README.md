@@ -1,8 +1,7 @@
 
 Login page: 
 
-![2023-03-06 00_35_16-NVIDIA GeForce Overlay DT](https://user-images.githubusercontent.com/76654674/222987506-6f17397d-5065-4b27-af33-a5ca434576ec.png)
-
+![2023-03-06 00_42_29-NVIDIA GeForce Overlay DT](https://user-images.githubusercontent.com/76654674/222987678-8d5e3246-0229-41b8-a80e-19ac42c86bac.png)
 
 
 Chat page:
