@@ -3,8 +3,9 @@
 This repository contains a web application designed to streamline interactions with a chatbot. Its main purpose is to enable users to input prompts and promptly receive responses from the bot in real-time. The application offers various customizable features, such as setting distinct user and chat names, specifying external commands, selecting preferred languages, and utilizing checkbox functionalities.
 
 Login page: 
-
+<p align="center">
 <img src="https://user-images.githubusercontent.com/76654674/222987678-8d5e3246-0229-41b8-a80e-19ac42c86bac.png" alt="Login page" style="display: block; margin-left: auto; margin-right: auto;">
+</p>
 
 ## Technologies Used
 
@@ -17,9 +18,9 @@ Login page:
 - **Message Integrity**: The application employs a unique message identification system to ensure message integrity and smooth retrieval processes.
 
 Chat page:
-
+<p align="center">
 <img src="https://user-images.githubusercontent.com/76654674/222987510-1ad34d99-eb42-473f-8904-602880569af5.png" alt="Chat page" style="display: block; margin-left: auto; margin-right: auto;">
-
+</p>
 ## Summary
 
 This repository offers a comprehensive solution for engaging and dynamic interactions with a chatbot. It combines intuitive design with robust functionality to deliver an immersive user experience.
